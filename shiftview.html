@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style type="text/css">
+  
+  table {
+      border: 1px solid #ccc; /* Add a border to the table */
+      border-collapse: collapse; /* Collapse borders to prevent double borders */
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ccc; /* Add borders to table cells (th and td) */
+      padding: 8px;
+      text-align: left;
+    }
+  	header,
+	main,
+	footer {
+	  padding-left: 240px;
+	}
+
+	body {
+	  backgroud: white;
+	}
+
+	@media only screen and (max-width: 992px) {
+	  header,
+	  main,
+	  footer {
+	    padding-left: 0;
+	  }
+	}
+
+	#credits li,
+	#credits li a {
+	  color: white;
+	}
+
+	#credits li a {
+	  font-weight: bold;
+	}
+
+	.footer-copyright .container,
+	.footer-copyright .container a {
+	  color: #BCC2E2;
+	}
+
+	.fab-tip {
+	  position: fixed;
+	  right: 85px;
+	  padding: 0px 0.5rem;
+	  text-align: right;
+	  background-color: #323232;
+	  border-radius: 2px;
+	  color: #FFF;
+	  width: auto;
+	}
+  </style>
+</head>
+
+<body>
+
+   <ul id="slide-out" class="side-nav fixed z-depth-2">
+    <li class="center no-padding">
+      <div class="indigo darken-2 white-text" style="height: 180px;">
+        <div class="row">
+          <img style="margin-top: 5%;" width="100" height="100" src="https://drive.google.com/uc?id=19Snm8INPDHJvXfDPuJv01N4dS2YfhZmk" alt="Image Description" class="circle responsive-img" />
+          
+        </div>
+      </div>
+    </li>
+
+    <li id="dash_dashboard"><a class="waves-effect" href="emphome.html"><b>Dashboard</b></a></li>
+
+    <ul class="collapsible" data-collapsible="accordion">
+      
+
+      <li id="dash_products">
+        <div id="dash_products_header" class="collapsible-header waves-effect"><b>Contact us</b></div>
+        
+      </li>
+
+      
+    </ul>
+  </ul>
+
+  <header>
+    <ul class="dropdown-content" id="user_dropdown">
+      <li><a class="indigo-text" href="#!">Profile</a></li>
+      <li><a class="indigo-text" href="#!">Logout</a></li>
+    </ul>
+
+    <nav class="indigo" role="navigation">
+      <div class="nav-wrapper">
+        <a data-activates="slide-out" class="button-collapse show-on-large" href="#!"><img style="margin-top: 17px; margin-left: 5px;" src="https://res.cloudinary.com/dacg0wegv/image/upload/t_media_lib_thumb/v1463989873/smaller-main-logo_3_bm40iv.gif" /></a>
+
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <a class='right dropdown-button' href='' data-activates='user_dropdown'><i class=' material-icons'>account_circle</i></a>
+          </li>
+        </ul>
+
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      </div>
+    </nav>
+
+    
+  </header>
+  
+  <main>
+    <div class="row">
+      <div class="col s66">
+        <div style="padding: 2px;" align="center" class="card">
+        
+        <div class="container">
+        <h2>Shift View</h2>
+        <form>
+            <label for="select-month" style="font-weight: bold; display: block; float: left; margin-right: 10px;">Select Month:</label>
+            <select id="select-month" name="select-month" required>
+            <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+                <!-- <option value="January">January</option> -->
+                <!-- Add options for all months -->
+            </select>
+
+            <div class="btn-container">
+                <button type="button" class="btn" onclick="viewShiftDetails()">View Shift</button>
+            </div>
+        </form>
+
+        <table id="shift-details-table">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Day Name</th>
+                    <th>Shift Timing</th>
+                </tr>
+            </thead>
+            <tbody id="shift-details-body">
+                <!-- Shift details for the selected month will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+    
+    const shiftDetailsData = {
+        'January': [
+            { day: 'd1', dayName: 'Tue', shiftTiming: 'm3-10' },
+            { day: 'd2', dayName: 'Wed', shiftTiming: 'woff' },
+            { day: 'd3', dayName: 'Thu', shiftTiming: 'm3-10' },
+            { day: 'd4', dayName: 'Fri', shiftTiming: 'm3-10' },
+            { day: 'd5', dayName: 'Sat', shiftTiming: 'm3-10' },
+            { day: 'd6', dayName: 'Sun', shiftTiming: 'woff' },
+            { day: 'd7', dayName: 'Mon', shiftTiming: 'm3-10' },
+            { day: 'd8', dayName: 'Tue', shiftTiming: 'm3-10' },
+            { day: 'd9', dayName: 'Wed', shiftTiming: 'woff' },
+            { day: 'd10', dayName: 'Thu', shiftTiming: 'm3-10' },
+            { day: 'd11', dayName: 'Fri', shiftTiming: 'm3-10' },
+            { day: 'd12', dayName: 'Sat', shiftTiming: 'm3-10' },
+            { day: 'd13', dayName: 'Sun', shiftTiming: 'woff' },
+            { day: 'd14', dayName: 'Mon', shiftTiming: 'm3-10' },
+            { day: 'd15', dayName: 'Tue', shiftTiming: 'm3-10' },
+            { day: 'd16', dayName: 'Wed', shiftTiming: 'woff' },
+            { day: 'd17', dayName: 'Thu', shiftTiming: 'm3-10' },
+            { day: 'd18', dayName: 'Fri', shiftTiming: 'm3-10' },
+            { day: 'd19', dayName: 'Sat', shiftTiming: 'm3-10' },
+            { day: 'd20', dayName: 'Sun', shiftTiming: 'woff' },
+            { day: 'd21', dayName: 'Mon', shiftTiming: 'm3-10' },
+            { day: 'd22', dayName: 'Tue', shiftTiming: 'm3-10' },
+            { day: 'd23', dayName: 'Wed', shiftTiming: 'woff' },
+            { day: 'd24', dayName: 'Thu', shiftTiming: 'm3-10' },
+            { day: 'd25', dayName: 'Fri', shiftTiming: 'm3-10' },
+            { day: 'd26', dayName: 'Sat', shiftTiming: 'm3-10' },
+            { day: 'd27', dayName: 'Sun', shiftTiming: 'woff' },
+            { day: 'd28', dayName: 'Mon', shiftTiming: 'm3-10' },
+            { day: 'd29', dayName: 'Tue', shiftTiming: 'm3-10' },
+            { day: 'd30', dayName: 'Wed', shiftTiming: 'woff' }
+        ],
+        // Add data for other months
+    };
+
+    function viewShiftDetails() {
+        const selectedMonth = document.getElementById('select-month').value;
+        const shiftDetails = shiftDetailsData[selectedMonth];
+
+        const tableBody = document.getElementById('shift-details-body');
+        tableBody.innerHTML = '';
+
+        if (shiftDetails) {
+            shiftDetails.forEach(detail => {
+                const row = tableBody.insertRow();
+                const cellDay = row.insertCell(0);
+                const cellDayName = row.insertCell(1);
+                const cellShiftTiming = row.insertCell(2);
+
+                cellDay.textContent = detail.day;
+                cellDayName.textContent = detail.dayName;
+                cellShiftTiming.textContent = detail.shiftTiming;
+            });
+        }
+        
+    }
+</script>
+         
+         
+     
+        </div>
+     
+</body>
+</html>
